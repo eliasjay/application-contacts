@@ -10,7 +10,12 @@ class PhoneRepository implements IPhoneRepository {
   constructor() {
     this.ormRepository = getRepository(Phone)
   }
-  
+  public async findById(id: string): Promise<Phone | undefined> {
+    const phone = await this.ormRepository.findOne(id)
+
+    return phone
+  }
+
   public async findByUser(user_id: string): Promise<Phone[] | undefined> {
     const phones = await this.ormRepository.find({
       where:  { user_id }

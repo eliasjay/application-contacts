@@ -13,17 +13,19 @@ class UserRepository implements IUserRepository {
   }
   
   public async findById(id: string): Promise<User | undefined> {
-    const user = await this.ormRepository.findOne(id)
+    const user = await this.ormRepository.findOne({
+      where: { id }
+    })
     
     return user
   }
 
-  public async findByName(name: string): Promise<User[] | undefined> {
-    const users = await this.ormRepository.find({
+  public async findByName(name: string): Promise<User | undefined> {
+    const user = await this.ormRepository.findOne({
       where: { name }
     })
     
-    return users
+    return user
   }
 
   public async findAll(): Promise<User[] | undefined> {

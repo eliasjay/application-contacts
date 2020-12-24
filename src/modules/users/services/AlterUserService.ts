@@ -45,18 +45,20 @@ class AlterUserService {
       throw new AppError('User does not exists.')
     }
 
-    user.name = name
-    user.birth_date = new Date(birth_date)
-    user.cpf = cpf
-    user.rg = rg
-    user.phones = phones
-    user.addresses = addresses
-    user.facebook = facebook
-    user.linkedin = linkedin
-    user.twitter = twitter
-    user.instagram = instagram
+    Object.assign(user, {
+      name,
+      birth_date,
+      cpf,
+      rg,
+      phones,
+      addresses,
+      facebook,
+      linkedin,
+      twitter,
+      instagram
+    })
 
-    await this.userRepository.save(user)
+    this.userRepository.save(user)
 
     return user
   }

@@ -25,7 +25,7 @@ class CreateUserService {
     twitter,
     instagram
   }: IUserDTO): Promise<User> {
-    const checkUserName = this.userRepository.findByName(name)
+    const checkUserName = await this.userRepository.findByName(name)
 
     if (checkUserName) {
       throw new AppError('User name already exists.');

@@ -7,11 +7,11 @@ import cors from 'cors';
 import routes from '@shared/infra/http/routes';
 
 import AppError from '@shared/errors/AppError';
+import morgan from "morgan";
 
 import '@shared/infra/typeorm';
 import '@shared/container';
 
-import morgan from "morgan";
 
 const app = express();
 
@@ -34,6 +34,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     status: 'error',
     message: 'Internal Server Error',
   });
-}); 
+});
 
-app.listen(3000, () => console.log('server started'));
+app.listen(process.env.PORT || 3000, () => console.log('server started'));

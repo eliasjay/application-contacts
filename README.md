@@ -92,7 +92,7 @@ Body:
 }
 ```
 
-```**Note:** fields with a ? character aren't obligatory.```
+**Note:** fields with a ? character aren't obligatory.
 
 Response: Must return the updated user.
 

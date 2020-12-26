@@ -48,11 +48,11 @@ export class CreateUsers1608649098112 implements MigrationInterface {
                     },
                     {
                         name: 'phones',
-                        type: 'varchar'
+                        type: 'json'
                     },
                     {
                         name: 'addresses',
-                        type: 'varchar'
+                        type: 'json'
                     },
                     {
                         name: 'created_at',

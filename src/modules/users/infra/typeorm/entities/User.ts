@@ -3,12 +3,8 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
-  UpdateDateColumn,
-  OneToMany
+  UpdateDateColumn
 } from 'typeorm';
-
-import Phone from "../../../../phones/infra/typeorm/entities/Phone";
-import Address from "../../../../addresses/infra/typeorm/entities/Address";
 
 @Entity('users')
 class User {
@@ -39,13 +35,21 @@ class User {
   @Column()
   rg: string
 
-  @OneToMany(() => Phone, phone => phone.user_id)
-  @Column('varchar', { array: true })
-  phones: Phone[]
+  @Column({ type: 'json' })
+  phones: {
+    phone_number: string,
+    type: 'home' | 'work' | 'other'
+  }[]
   
-  @OneToMany(() => Address, address => address.user_id)
-  @Column('varchar', { array: true })
-  addresses: Address[]
+  @Column({ type: 'json' })
+  addresses: {
+    street: string,
+    city: string,
+    state: string,
+    country: string,
+    zipcode: string,
+    type: 'home' | 'work' | 'other'
+  }[]
 
   @CreateDateColumn()
   created_at: Date;

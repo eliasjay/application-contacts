@@ -10,7 +10,7 @@ Case - Application Contacts
 ## How to run
 You will need a postgres instance for database and a database named by <b>contacts</b>. Docker is recomended.
 
-Run in docker: ```docker run --name postgres -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres```
+Run in docker: ```docker run --name app-contacts -e POSTGRES_PASSWORD=postgres -p 5432:5432 -d postgres```
 
 <b>Note</b>: every time when the docker shutdowns, you will need to start the container again: ```docker start CONTAINER_ID```
 
@@ -48,7 +48,7 @@ Body:
   "addresses": [
     {
       "street": "Rua Benjamin Constant, 246",
-      "district": "Quintana",
+      "city": "Quintana",
       "state": "SP",
       "country": "Brazil",
       "zipcode": "17670000",
@@ -56,7 +56,7 @@ Body:
     },
     {
       "street": "Rua Francisco Pereira Bezerra, 180",
-      "district": "Presidente Prudente",
+      "city": "Presidente Prudente",
       "state": "SP",
       "country": "Brazil",
       "zipcode": "19062304",
@@ -91,6 +91,8 @@ Body:
   "instagram?": "https://www.instagram.com/zeliasgl/"
 }
 ```
+
+```**Note:** fields with a ? character aren't obligatory.```
 
 Response: Must return the updated user.
 

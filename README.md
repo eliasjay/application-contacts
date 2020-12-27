@@ -18,6 +18,8 @@ To install all dependencies: ```yarn```
 
 To config ORM and Database Migrations: ```yarn ts-node ./node_modules/typeorm/cli.js migration:run```
 
+To run all tests: ```yarn test```
+
 To run in development mode: ```yarn dev```
 
 To build: ```yarn build```

@@ -41,10 +41,6 @@ class AlterUserService {
   }: IRequest): Promise<User> {
     const user = await this.userRepository.findById(id)
 
-    if (!user) {
-      throw new AppError('User does not exists.')
-    }
-
     Object.assign(user, {
       name,
       birth_date,

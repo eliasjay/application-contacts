@@ -73,9 +73,12 @@ class UserController {
   }
   
   public async show(request: Request, response: Response): Promise<Response> {
+    const page = +request.query.page || 1
+    const limit = +request.query.limit || 2
+
     const showUserService = container.resolve(ShowUserService)
 
-    const users = await showUserService.execute()
+    const users = await showUserService.execute({ page, limit })
 
     return response.json(users)
   }

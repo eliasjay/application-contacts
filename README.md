@@ -29,7 +29,9 @@ To run in production mode: ```yarn start```
 ## Routes & Requests
 
 ##### [GET]
-Endpoint: ```http://localhost:3000/users```
+Endpoint: ```http://localhost:3000/users?page=1&limit=2```
+
+**Note:** query string *page* and *limit* recieved this values by default. It is only necessary if you want different numbers from 1 and 2.
 
 Response: Must return an array with all users.
 

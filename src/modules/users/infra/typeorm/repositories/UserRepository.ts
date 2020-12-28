@@ -34,10 +34,10 @@ class UserRepository implements IUserRepository {
   }
 
   public async findAll({ page, limit }: IOffset): Promise<User[] | undefined> {
-    const hop = (page - 1) * limit
+    const hops = (page - 1) * limit
 
     const users = await this.ormRepository.find({
-      skip: hop,
+      skip: hops,
       take: limit
     })
 

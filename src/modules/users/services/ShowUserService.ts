@@ -3,6 +3,11 @@ import { inject, injectable } from "tsyringe";
 import IUserRepository from "../repositories/IUserRepository";
 import User from "@modules/users/infra/typeorm/entities/User"
 
+interface IOffset {
+  page: number,
+  limit: number
+}
+
 @injectable()
 class ShowUserService {
   constructor(
@@ -10,8 +15,8 @@ class ShowUserService {
     private userRepository: IUserRepository
   ) { }
 
-  public async execute(): Promise<User[] | undefined> {
-    const users = await this.userRepository.findAll()
+  public async execute({ page, limit }: IOffset): Promise<User[] | undefined> {
+    const users = await this.userRepository.findAll({ page, limit })
 
     return users
   }

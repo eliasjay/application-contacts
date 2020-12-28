@@ -5,6 +5,11 @@ import IUserRepository from "../../../repositories/IUserRepository";
 import User from "../entities/User";
 import IUserDTO from "../../../dtos/IUserDTO";
 
+interface IOffset {
+  page: number,
+  limit: number
+}
+
 class UserRepository implements IUserRepository {
   private ormRepository: Repository<User>
 
@@ -28,8 +33,13 @@ class UserRepository implements IUserRepository {
     return user
   }
 
-  public async findAll(): Promise<User[] | undefined> {
-    const users = await this.ormRepository.find()
+  public async findAll({ page, limit }: IOffset): Promise<User[] | undefined> {
+    const hop = (page - 1) * limit
+
+    const users = await this.ormRepository.find({
+      skip: hop,
+      take: limit
+    })
 
     return users
   }

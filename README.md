@@ -26,7 +26,11 @@ To build: ```yarn build```
 
 To run in production mode: ```yarn start```
 
+**Note:** start script only works in deploy mode. Even you execute it in localhost, it won't work.
+
 ## Routes & Requests
+
+You can read more about at http://localhost:3000/swagger
 
 ##### [GET]
 Endpoint: ```http://localhost:3000/users?page=1&limit=2```

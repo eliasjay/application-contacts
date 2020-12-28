@@ -18,6 +18,8 @@ To install all dependencies: ```yarn```
 
 To config ORM and Database Migrations: ```yarn ts-node ./node_modules/typeorm/cli.js migration:run```
 
+**Note:** Remove *.example* from orm config file before the command above.
+
 To run all tests: ```yarn test```
 
 To run in development mode: ```yarn dev```
@@ -26,7 +28,11 @@ To build: ```yarn build```
 
 To run in production mode: ```yarn start```
 
+**Note:** start script only works in deploy mode. Even you execute it in localhost, it won't work.
+
 ## Routes & Requests
+
+You can read more about at http://localhost:3000/swagger
 
 ##### [GET]
 Endpoint: ```http://localhost:3000/users?page=1&limit=2```

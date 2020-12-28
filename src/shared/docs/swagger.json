@@ -1,0 +1,247 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "description": "A technical test API to D1.",
+    "title": "Application Contacts",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "",
+  "schemas": [
+    "http",
+    "https"
+  ],
+  "tags": [
+    {
+      "name": "Users"
+    }
+  ],
+  "consumes": "application/json",
+  "produces": "application/json",
+  "paths": {
+    "/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get all users",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Users"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Create a new user",
+        "requestBody": {
+          "description": "User Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User"
+              }
+            }
+          }
+        },
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User_ID"
+            }
+          },
+          "400": {
+            "description": "Bad request."
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Update an user",
+        "requestBody": {
+          "description": "User Object",
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/User_ID"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/User"
+            }
+          },
+          "400": {
+            "description": "Bad request."
+          },
+          "404": {
+            "description": "User not found."
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User_ID": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "uuid"
+        },
+        "name": {
+          "type": "string"
+        },
+        "birth_date": {
+          "type": "Date"
+        },
+        "facebook": {
+          "type": "string"
+        },
+        "linkedin": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "instagram": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "rg": {
+          "type": "string"
+        },
+        "phones": {
+          "type": "object",
+          "properties": {
+            "phone_number": {
+              "type": "string"
+            },
+            "type": {
+              "type": "home | work | other"
+            }
+          }
+        },
+        "addresses": {
+          "type": "object",
+          "properties": {
+            "street": {
+              "type": "string"
+            },
+            "citye": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "zipcode": {
+              "type": "string"
+            },
+            "type": {
+              "type": "home | work | other"
+            }
+          }
+        }
+      }
+    },
+    "User": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "birth_date": {
+          "type": "Date"
+        },
+        "facebook": {
+          "type": "string"
+        },
+        "linkedin": {
+          "type": "string"
+        },
+        "twitter": {
+          "type": "string"
+        },
+        "instagram": {
+          "type": "string"
+        },
+        "cpf": {
+          "type": "string"
+        },
+        "rg": {
+          "type": "string"
+        },
+        "phones": {
+          "type": "object",
+          "properties": {
+            "phone_number": {
+              "type": "string"
+            },
+            "type": {
+              "type": "home | work | other"
+            }
+          }
+        },
+        "addresses": {
+          "type": "object",
+          "properties": {
+            "street": {
+              "type": "string"
+            },
+            "citye": {
+              "type": "string"
+            },
+            "state": {
+              "type": "string"
+            },
+            "country": {
+              "type": "string"
+            },
+            "zipcode": {
+              "type": "string"
+            },
+            "type": {
+              "type": "home | work | other"
+            }
+          }
+        }
+      }
+    },
+    "Users": {
+      "type": "object",
+      "properties": {
+        "users": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/User"
+          }
+        }
+      }
+    }
+  }
+}
